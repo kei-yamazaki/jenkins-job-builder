@@ -3,4 +3,7 @@ builders:
     - project: "build_started"
       predefined-parameters:
         FOO="bar"
+      filebuild-parameters:
+        file: hoge.properties,fuga.properties
+        failTriggerOnMissing: true
       block: true

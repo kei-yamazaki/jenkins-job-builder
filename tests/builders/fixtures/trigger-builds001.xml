@@ -8,6 +8,10 @@
             <hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
               <properties>FOO=&quot;bar&quot;</properties>
             </hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
+            <hudson.plugins.parameterizedtrigger.FileBuildParameters>
+              <propertiesFile>hoge.properties,fuga.properties</propertiesFile>
+              <failTriggerOnMissing>false</failTriggerOnMissing>
+            </hudson.plugins.parameterizedtrigger.FileBuildParameters>
           </configs>
           <projects>build_started</projects>
           <condition>ALWAYS</condition>

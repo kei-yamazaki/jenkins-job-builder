@@ -266,20 +266,20 @@ def trigger_builds(parser, xml_parent, data):
     :arg bool current-parameters: Whether to include the
       parameters passed to the current build to the
       triggered job.
+    :arg dict filebuild-parameters:
+        :filebuild-parameters:
+            * **file** (`string`) - comma seperated list of paths to file(s)
+            * **failTriggerOnMissing** (`bool`) - when enabled blocks the
+                triggering of the downstream jobs if any of the files are not
+                found in the workspace (default false)
     :arg bool svn-revision: Whether to pass the svn revision
       to the triggered job
     :arg bool block: whether to wait for the triggered jobs
       to finish or not (default false)
 
-    Example::
+    Example:
 
-      builders:
-        - trigger-builds:
-            - project: "build_started"
-              predefined-parameters:
-                FOO="bar"
-              block: true
-
+    .. literalinclude:: ../../tests/builders/fixtures/trigger-builds001.yaml
     """
     tbuilder = XML.SubElement(xml_parent,
                               'hudson.plugins.parameterizedtrigger.'
@@ -307,6 +307,16 @@ def trigger_builds(parser, xml_parent, data):
                                     'PredefinedBuildParameters')
             properties = XML.SubElement(params, 'properties')
             properties.text = project_def['predefined-parameters']
+        if 'filebuild-parameters' in project_def:
+            file_params = XML.SubElement(tconfigs,
+                                         'hudson.plugins.parameterizedtrigger.'
+                                         'FileBuildParameters')
+            property_file = XML.SubElement(file_params, 'propertiesFile')
+            property_file.text = project_def['filebuild-parameters']['file']
+            fail_trigger_on_missing = XML.SubElement(file_params,
+                                                     'failTriggerOnMissing')
+            fail_trigger_on_missing.text = str(project_def.get(
+                'failTriggerOnMissing-upgrade', False)).lower()
         if(len(list(tconfigs)) == 0):
             tconfigs.set('class', 'java.util.Collections$EmptyList')
         projects = XML.SubElement(tconfig, 'projects')
