@@ -3,6 +3,7 @@
   <buildWrappers>
     <hudson.plugins.build__timeout.BuildTimeoutWrapper>
       <timeoutMinutes>3</timeoutMinutes>
+      <timeout>180000</timeout>
       <failBuild>false</failBuild>
       <writingDescription>false</writingDescription>
       <timeoutPercentage>0</timeoutPercentage>
