@@ -103,6 +103,7 @@ print(&quot;Doing something cool with python&quot;)
   <buildWrappers>
     <hudson.plugins.build__timeout.BuildTimeoutWrapper>
       <timeoutMinutes>3</timeoutMinutes>
+      <timeout>180000</timeout>
       <failBuild>true</failBuild>
       <writingDescription>false</writingDescription>
       <timeoutPercentage>150</timeoutPercentage>

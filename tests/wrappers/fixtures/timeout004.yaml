@@ -1,0 +1,5 @@
+ wrappers:
+    - timeout:
+        fail: true
+        no-activity-timeout: 360000
+        type: no-activity
