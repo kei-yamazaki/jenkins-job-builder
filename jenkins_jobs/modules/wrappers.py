@@ -144,6 +144,7 @@ def timeout(parser, xml_parent, data):
      * **likely-stuck**
      * **elastic**
      * **absolute**
+     * **no-activity**
 
     Example:
 
@@ -152,6 +153,8 @@ def timeout(parser, xml_parent, data):
     .. literalinclude:: /../../tests/wrappers/fixtures/timeout002.yaml
 
     .. literalinclude:: /../../tests/wrappers/fixtures/timeout003.yaml
+
+    .. literalinclude:: /../../tests/wrappers/fixtures/timeout004.yaml
     """
     twrapper = XML.SubElement(xml_parent,
                               'hudson.plugins.build__timeout.'
@@ -172,6 +175,13 @@ def timeout(parser, xml_parent, data):
     tout_type = str(data.get('type', 'absolute')).lower()
     if tout_type == 'likely-stuck':
         tout_type = 'likelyStuck'
+    elif tout_type == 'no-activity':
+        noactivity = XML.SubElement(twrapper,
+                                    'strategy',
+                                    {'class': 'hudson.plugins.build_timeout.impl.NoActivityTimeOutStrategy'})
+        XML.SubElement(noactivity,
+                                    'timeout').text = str(
+            data.get('no-activity-timeout', 180000))
     XML.SubElement(twrapper, 'timeoutType').text = tout_type
 
 
