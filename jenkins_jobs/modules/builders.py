@@ -1160,6 +1160,8 @@ def multijob(parser, xml_parent, data):
                 * **kill-phase-on** (`str`) -- Stop the phase execution
                   on specific job status. Can be 'FAILURE', 'UNSTABLE',
                   'NEVER'. (optional)
+                * **retry** (`int`) -- The maximum retry for this build.
+                * **parsing-rules-path** (`str`) -- Parsing rules file path
 
     Example:
 
@@ -1190,6 +1192,14 @@ def multijob(parser, xml_parent, data):
         # Pass through the current build params
         currParams = str(project.get('current-parameters', False)).lower()
         XML.SubElement(phaseJob, 'currParams').text = currParams
+
+        # Retry job
+        retry = project.get('retry')
+        if retry is not None:
+            rules_path = project.get('parsing-rules-path')
+            XML.SubElement(phaseJob, 'parsingRulesPath').text = rules_path
+            XML.SubElement(phaseJob, 'maxRetries').text = str(retry)
+            XML.SubElement(phaseJob, 'enableRetryStrategy').text = "true"
 
         # Pass through other params
         configs = XML.SubElement(phaseJob, 'configs')
