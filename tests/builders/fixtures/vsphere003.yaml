@@ -1,0 +1,6 @@
+builders:
+  - vsphere:
+      action: powerOn
+      vm: vm3
+      server: example.com
+      hash: 1234567890

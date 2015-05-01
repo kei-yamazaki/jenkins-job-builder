@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+  <builders>
+    <org.jenkinsci.plugins.vsphere.VSphereBuildStepContainer>
+      <buildStep class="org.jenkinsci.plugins.vsphere.builders.RevertToSnapshot">
+        <vm>vm1</vm>
+        <snapshotName>snapshot1</snapshotName>
+      </buildStep>
+      <serverName>example.com</serverName>
+      <serverHash>1234567890</serverHash>
+    </org.jenkinsci.plugins.vsphere.VSphereBuildStepContainer>
+  </builders>
+</project>

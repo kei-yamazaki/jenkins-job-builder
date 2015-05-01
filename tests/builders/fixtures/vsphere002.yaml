@@ -1,0 +1,7 @@
+builders:
+  - vsphere:
+      action: powerOn
+      vm: vm2
+      timeoutInSeconds: 120
+      server: example.com
+      hash: 1234567890

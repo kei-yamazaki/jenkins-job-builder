@@ -1934,3 +1934,25 @@ def sonatype_clm(parser, xml_parent, data):
         data.get('module-excludes', '')).lower()
     XML.SubElement(path_config, 'scanProperties').text = str(
         data.get('advanced-options', '')).lower()
+
+
+def vsphere(parser, xml_parent, data):
+    vsphere = XML.SubElement(xml_parent, 'org.jenkinsci.plugins.vsphere.'
+                                         'VSphereBuildStepContainer')
+    action = data['action']
+    build = XML.SubElement(vsphere, 'buildStep')
+    if action == 'revertToSnapshot':
+        build.set('class', 'org.jenkinsci.plugins.vsphere.'
+                           'builders.RevertToSnapshot')
+        XML.SubElement(build, 'vm').text = str(data['vm'])
+        XML.SubElement(build, 'snapshotName').text = str(data['snapshot'])
+    if action == 'powerOn':
+        build.set('class', 'org.jenkinsci.plugins.vsphere.'
+                           'builders.PowerOn')
+        XML.SubElement(build, 'vm').text = str(data['vm'])
+        XML.SubElement(build, 'timeoutInSeconds').text \
+            = str(data.get('timeoutInSeconds', 60))
+    XML.SubElement(vsphere, 'serverName').text = str(data.get(
+        'server'))
+    XML.SubElement(vsphere, 'serverHash').text = str(data.get(
+        'hash'))

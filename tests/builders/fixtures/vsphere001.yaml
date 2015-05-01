@@ -1,0 +1,7 @@
+builders:
+  - vsphere:
+      action: revertToSnapshot
+      vm: vm1
+      snapshot: snapshot1
+      server: example.com
+      hash: 1234567890
