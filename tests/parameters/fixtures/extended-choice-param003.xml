@@ -6,20 +6,20 @@
         <com.cwctravel.hudson.plugins.extended__choice__parameter.ExtendedChoiceParameterDefinition>
           <name>OPTIONS</name>
           <description>Available options</description>
-          <value>OptionA,OptionB,OptionC</value>
-          <descriptionPropertyValue>DescA,DescB,DescC</descriptionPropertyValue>
+          <value>foo|bar|select</value>
+          <descriptionPropertyValue/>
           <visibleItemCount>2</visibleItemCount>
-          <multiSelectDelimiter>,</multiSelectDelimiter>
-          <quoteValue>false</quoteValue>
-          <defaultValue/>
-          <type>PT_CHECKBOX</type>
+          <multiSelectDelimiter>|</multiSelectDelimiter>
+          <quoteValue>true</quoteValue>
+          <defaultValue>foo</defaultValue>
+          <type>PT_MULTI_SELECT</type>
           <propertyFile/>
           <propertyKey/>
-          <defaultPropertyFile/>
-          <defaultPropertyKey/>
-          <groovyScript/>
-          <bindings/>
-          <groovyClasspath/>
+          <defaultPropertyFile>/home/property.prop</defaultPropertyFile>
+          <defaultPropertyKey>fookey</defaultPropertyKey>
+          <groovyScript>def someArray = []</groovyScript>
+          <bindings>a=b</bindings>
+          <groovyClasspath>/some/path</groovyClasspath>
         </com.cwctravel.hudson.plugins.extended__choice__parameter.ExtendedChoiceParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>

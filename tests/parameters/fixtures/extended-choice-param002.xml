@@ -7,6 +7,7 @@
           <name>OPTIONS</name>
           <description>Available options</description>
           <value>foo|bar|select</value>
+          <descriptionPropertyValue/>
           <visibleItemCount>2</visibleItemCount>
           <multiSelectDelimiter>|</multiSelectDelimiter>
           <quoteValue>true</quoteValue>
@@ -16,6 +17,9 @@
           <propertyKey>key</propertyKey>
           <defaultPropertyFile>/home/property.prop</defaultPropertyFile>
           <defaultPropertyKey>fookey</defaultPropertyKey>
+          <groovyScript/>
+          <bindings/>
+          <groovyClasspath/>
         </com.cwctravel.hudson.plugins.extended__choice__parameter.ExtendedChoiceParameterDefinition>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>

@@ -291,11 +291,18 @@ def extended_choice_param(parser, xml_parent, data):
         radio, checkbox or textbox (optional, default single-select)
     :arg str value: comma separated list of values for the single select
         or multi-select box (optional, default '')
+    :arg str description-value: description of value (optional, default '')
     :arg str default-value: used to set the initial selection of the
         single-select or multi-select box (optional, default '')
     :arg str default-property-file: location of property file when default
         value needs to come from a property file (optional, default '')
     :arg str default-property-key: key for the default property file
+        (optional, default '')
+    :arg str groovy-script: groovy script
+        (optional, default '')
+    :arg str variable-bindings: variable bindings
+        (optional, default '')
+    :arg str groovy-classpath: groovy classpath
         (optional, default '')
     :arg str multi-select-delimiter: value between selections when the
         parameter is a multi-select (optiona, default ',')
@@ -312,6 +319,7 @@ def extended_choice_param(parser, xml_parent, data):
                       'extended__choice__parameter.'
                       'ExtendedChoiceParameterDefinition')
     XML.SubElement(pdef, 'value').text = data.get('value', '')
+    XML.SubElement(pdef, 'descriptionPropertyValue').text = data.get('description-value', '')
     XML.SubElement(pdef, 'visibleItemCount').text = str(data.get(
         'visible-items', data.get('visible-item-count', 5)))
     XML.SubElement(pdef, 'multiSelectDelimiter').text = data.get(
@@ -345,6 +353,12 @@ def extended_choice_param(parser, xml_parent, data):
         'default-property-file', '')
     XML.SubElement(pdef, 'defaultPropertyKey').text = data.get(
         'default-property-key', '')
+    XML.SubElement(pdef, 'groovyScript').text = data.get(
+        'groovy-script', '')
+    XML.SubElement(pdef, 'bindings').text = data.get(
+        'variable-bindings', '')
+    XML.SubElement(pdef, 'groovyClasspath').text = data.get(
+        'groovy-classpath', '')
 
 
 def validating_string_param(parser, xml_parent, data):

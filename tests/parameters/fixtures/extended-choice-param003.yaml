@@ -1,0 +1,15 @@
+parameters:
+  - extended-choice:
+      name: OPTIONS
+      description: "Available options"
+      quote-value: true
+      type: multi-select
+      value: "foo|bar|select"
+      visible-items: 2
+      multi-select-delimiter: '|'
+      default-value: foo
+      default-property-file: /home/property.prop
+      default-property-key: fookey
+      groovy-script: def someArray = []
+      variable-bindings: a=b
+      groovy-classpath: /some/path
