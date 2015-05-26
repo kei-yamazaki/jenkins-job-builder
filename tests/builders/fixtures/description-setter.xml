@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+  <builders>
+    <hudson.plugins.descriptionsetter.DescriptionSetterBuilder>
+      <regexp>[a-z]</regexp>
+      <description>abcdefg</description>
+    </hudson.plugins.descriptionsetter.DescriptionSetterBuilder>
+  </builders>
+</project>

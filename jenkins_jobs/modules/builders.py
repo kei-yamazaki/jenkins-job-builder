@@ -1148,6 +1148,31 @@ def maven_target(parser, xml_parent, data):
     config_file_provider_settings(maven, data)
 
 
+def description_setter(parser, xml_parent, data):
+    """yaml: description-setter
+    Set the description for each build, based upon a RegEx
+    test of the build log file.
+    Requires the Jenkins
+    :jenkins-wiki:`Description Setter Plugin <Description+Setter+Plugin>`.
+
+    :arg str regexp: A RegEx which is used to scan the build log file
+        (optional)
+    :arg str description: The description to set on the build (optional)
+
+    Examples:
+
+    .. literalinclude:: ../../tests/builders/fixtures/description-setter.yaml
+       :language: yaml
+    """
+
+    description = XML.SubElement(xml_parent, 'hudson.plugins.descriptionsetter.'
+                                             'DescriptionSetterBuilder')
+
+    XML.SubElement(description, 'regexp').text = str(data.get('regexp', ''))
+    XML.SubElement(description, 'description').text = \
+        str(data.get('description', ''))
+
+
 def multijob(parser, xml_parent, data):
     """yaml: multijob
     Define a multijob phase. Requires the Jenkins
