@@ -1,0 +1,7 @@
+builders:
+      - conditional-step:
+          condition-kind: cause
+          condition-cause: TimerTrigger
+          condition-exclusive-cause: 'true'
+          steps:
+              - shell: "java -version"

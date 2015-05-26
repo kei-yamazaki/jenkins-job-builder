@@ -938,6 +938,23 @@ def conditional_step(parser, xml_parent, data):
 
                          :condition-operand: Condition to evaluate.  Can be
                            any supported conditional-step condition.
+    cause              Run the step if build cause match
+
+                         :condition-cause: Accepted values are USER_CAUSE,
+                           CLI_CAUSE, REMOTE_CAUSE, SCM_CAUSE, TIMER_CAUSE,
+                           UPSTREAM_CAUSE
+
+                           The following causes are supported if the XTrigger
+                           plugin is installed.
+                           FS_CAUSE, URL_CAUSE, IVY_CAUSE, SCRIPT_CAUSE,
+                           BUILDRESULT_CAUSE
+                         :condition-exclusive-cause: There might by
+                           multiple causes causing a build to be
+                           triggered, with this flag checked, the cause
+                           must be the only one causing this build to be
+                           triggered.
+
+                           Accepted values are 'true' or 'false'.
     ================== ====================================================
 
     Example:
@@ -1010,6 +1027,12 @@ def conditional_step(parser, xml_parent, data):
                      'org.jenkins_ci.plugins.run_condition.contributed.'
                      'BatchFileCondition')
             XML.SubElement(ctag, "command").text = cdata['condition-command']
+        elif kind == "cause":
+            ctag.set('class',
+                     'org.jenkins_ci.plugins.run_condition.core.'
+                     'CauseCondition')
+            XML.SubElement(ctag, "buildCause").text = cdata['condition-cause']
+            XML.SubElement(ctag, "exclusiveCause").text = cdata['condition-exclusive-cause']
         elif kind == "file-exists":
             ctag.set('class',
                      'org.jenkins_ci.plugins.run_condition.core.'
