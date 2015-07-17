@@ -49,6 +49,8 @@ authtoken=dummy
 send-as=Jenkins
 """
 
+reload(sys)
+sys.setdefaultencoding('utf8')
 
 def confirm(question):
     answer = raw_input('%s (Y/N): ' % question).upper().strip()
